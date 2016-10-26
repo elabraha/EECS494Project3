@@ -6,17 +6,12 @@ public class ConveyerBelt : MonoBehaviour {
 
 	//float starttime = 0.0f;
 	//Vector3 finishpos;
-	GameObject objectToMove;
+	//GameObject objectToMove;
 	bool moveObject = false;
 	public float timetodest = 1.0f;
 	//Vector3 startpos;
 	float speed = 0.0f;
 	float speed_change = 0.5f;
-
-//	private Vector3 screenPoint; 
-//	private Vector3 offset; 
-//	private float _lockedYPosition;
-
 
 
 	private Vector3 screenPoint;
@@ -50,20 +45,22 @@ public class ConveyerBelt : MonoBehaviour {
 	// Use this for initialization
 	void OnCollisionEnter(Collision coll){
 		if (coll.gameObject.tag == "Note") {
-			objectToMove = coll.gameObject;
+			//objectToMove = coll.gameObject;
 			//starttime = Time.time;
-			moveObject = true;
 			//startpos = coll.gameObject.transform.position;
 			//finishpos.y = coll.gameObject.transform.position.y;
 
-			speed = 5.0f;
+			//moveObject = true;
+			//speed = 5.0f;
+
+			coll.gameObject.GetComponent <Note>().OnConveyer ();
 		}
 	}
 
 
 	// Update is called once per frame
 	void Update () {
-		if (objectToMove && moveObject) {
+		if (/*objectToMove &&*/ moveObject) {
 //			float timeSinceStarted = Time.time - starttime;
 //			float percentageComplete = timeSinceStarted / timetodest;
 //			objectToMove.transform.position = Vector3.Lerp (startpos, finishpos, percentageComplete);
@@ -71,13 +68,14 @@ public class ConveyerBelt : MonoBehaviour {
 //			{
 //				moveObject = false;
 //			}
-			speed -= speed_change * Time.deltaTime;
-			Vector3 moveonbelt = objectToMove.GetComponent<Rigidbody> ().velocity;
-			moveonbelt.x = speed;
-			if (moveonbelt.x <= 0.0f) {
-				moveObject = false;
-			}
-			objectToMove.GetComponent<Rigidbody> ().velocity = moveonbelt;
+//			speed -= speed_change * Time.deltaTime; //change this so that it get's called from note
+//			Vector3 moveonbelt = objectToMove.GetComponent<Rigidbody> ().velocity;
+//			moveonbelt.x = speed;
+//			if (moveonbelt.x <= 0.0f) {
+//				moveObject = false;
+//			}
+//			objectToMove.GetComponent<Rigidbody> ().velocity = moveonbelt;
+
 		}
 	}
 }

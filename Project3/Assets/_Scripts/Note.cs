@@ -11,6 +11,11 @@ public class Note : MonoBehaviour {
 	float y_boundry_max = 0.0f;
 	float height = 0.0f;
 	float width = 0.0f;
+	//public bool onbelt = false;
+	float speed = 0.0f;
+	bool moveObject = false;
+	float speed_change = 0.5f;
+
 	void Start () {
 		Camera cam = Camera.main;
 		height = 2f * cam.orthographicSize;
@@ -46,8 +51,24 @@ public class Note : MonoBehaviour {
 			Destroy (this.gameObject);
 		}
 	}
+
+	public void OnConveyer() {
+			speed = 5.0f;
+			moveObject = true;
+	}
+
+		
 	// Update is called once per frame
 	void Update () {
+		if (moveObject) {
+			speed -= speed_change * Time.deltaTime; //change this so that it get's called from note
+			Vector3 moveonbelt = GetComponent<Rigidbody> ().velocity;
+			moveonbelt.x = speed;
+			if (moveonbelt.x <= 0.0f) {
+				moveObject = false;
+			}
+			GetComponent<Rigidbody> ().velocity = moveonbelt;
+		}
 
 		outofbounds ();
 
