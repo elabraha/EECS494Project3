@@ -48,6 +48,8 @@ public class Note : MonoBehaviour {
 //			Vector3 pos = transform.position;
 //			pos.y = y_boundry_max + boundy;
 //			transform.position = pos;
+			//send message to win game
+			WinGameEvent.G.dead ();
 			Destroy (this.gameObject);
 		}
 	}

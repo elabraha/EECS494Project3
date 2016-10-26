@@ -22,14 +22,16 @@ public class InstantiateFromImage : MonoBehaviour
 	// Use this for initialization
 	public void OnPointerClick(PointerEventData eventData) // 3
 	{
-		print("I was clicked");
-		print ("create");
-		target = Color.green;
-		//Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		Vector3 pos = Camera.main.ScreenToWorldPoint( new Vector3(Screen.width/2, Screen.height/2, 30.0f));
-		pos.z = 30.0f;
+		if (WinGameEvent.G.ifdead == false) {
+			print ("I was clicked");
+			print ("create");
+			target = Color.green;
+			//Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+			Vector3 pos = Camera.main.ScreenToWorldPoint (new Vector3 (Screen.width / 2, Screen.height / 2, 30.0f));
+			pos.z = 30.0f;
 
-		newobj  = Instantiate (prefab, pos, Quaternion.identity) as GameObject;
+			newobj = Instantiate (prefab, pos, Quaternion.identity) as GameObject;
+		}
 	}
 
 //	public void OnPointerEnter(PointerEventData eventData)

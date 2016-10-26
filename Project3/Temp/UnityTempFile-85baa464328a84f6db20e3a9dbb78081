@@ -87,6 +87,8 @@
 -define:UNITY_EDITOR_64
 -define:UNITY_EDITOR_OSX
 -define:UNITY_TEAM_LICENSE
+'Assets/_Scripts/Arrow.cs'
+'Assets/_Scripts/CanvasUI.cs'
 'Assets/_Scripts/ConveyerBelt.cs'
 'Assets/_Scripts/InstantiateFromImage.cs'
 'Assets/_Scripts/Note.cs'

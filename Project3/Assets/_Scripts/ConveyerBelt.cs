@@ -10,24 +10,28 @@ public class ConveyerBelt : MonoBehaviour {
 	bool moveObject = false;
 	public float timetodest = 1.0f;
 	//Vector3 startpos;
-	float speed = 0.0f;
-	float speed_change = 0.5f;
+//	float speed = 0.0f;
+//	float speed_change = 0.5f;
 
 
 	private Vector3 screenPoint;
 	private Vector3 offset;
 
 	void OnMouseDown(){
-		print ("anything??");
-		//screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-		offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 30.0f));
+		if (StopStartGame.S.dragModeOn) {
+			print ("anything??");
+			//screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+			offset = transform.position - Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 30.0f));
+		}
 	}
 
 	void OnMouseDrag(){
-		print ("no??");
-		Vector3 cursorPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 30.0f);
-		Vector3 cursorPosition = Camera.main.ScreenToWorldPoint(cursorPoint) + offset;
-		transform.position = cursorPosition;
+		if (StopStartGame.S.dragModeOn) {
+			print ("no??");
+			Vector3 cursorPoint = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 30.0f);
+			Vector3 cursorPosition = Camera.main.ScreenToWorldPoint (cursorPoint) + offset;
+			transform.position = cursorPosition;
+		}
 	}
 
 
@@ -39,7 +43,7 @@ public class ConveyerBelt : MonoBehaviour {
 //		pos.x = pos.x + collidersize.x / 2.0f + 1.4f;
 //		pos.y = pos.y + collidersize.y / 2.0f;
 //		finishpos = pos;
-		//print("now I was created");
+		print("now I was created");
 	}
 
 	// Use this for initialization
@@ -59,23 +63,24 @@ public class ConveyerBelt : MonoBehaviour {
 
 
 	// Update is called once per frame
-	void Update () {
-		if (/*objectToMove &&*/ moveObject) {
-//			float timeSinceStarted = Time.time - starttime;
-//			float percentageComplete = timeSinceStarted / timetodest;
-//			objectToMove.transform.position = Vector3.Lerp (startpos, finishpos, percentageComplete);
-//			if(percentageComplete >= 1.0f)
-//			{
-//				moveObject = false;
-//			}
-//			speed -= speed_change * Time.deltaTime; //change this so that it get's called from note
-//			Vector3 moveonbelt = objectToMove.GetComponent<Rigidbody> ().velocity;
-//			moveonbelt.x = speed;
-//			if (moveonbelt.x <= 0.0f) {
-//				moveObject = false;
-//			}
-//			objectToMove.GetComponent<Rigidbody> ().velocity = moveonbelt;
-
-		}
-	}
+//	void Update () {
+//		//print ("hello"); 
+//		if (/*objectToMove &&*/ moveObject) {
+////			float timeSinceStarted = Time.time - starttime;
+////			float percentageComplete = timeSinceStarted / timetodest;
+////			objectToMove.transform.position = Vector3.Lerp (startpos, finishpos, percentageComplete);
+////			if(percentageComplete >= 1.0f)
+////			{
+////				moveObject = false;
+////			}
+////			speed -= speed_change * Time.deltaTime; //change this so that it get's called from note
+////			Vector3 moveonbelt = objectToMove.GetComponent<Rigidbody> ().velocity;
+////			moveonbelt.x = speed;
+////			if (moveonbelt.x <= 0.0f) {
+////				moveObject = false;
+////			}
+////			objectToMove.GetComponent<Rigidbody> ().velocity = moveonbelt;
+//
+//		}
+//	}
 }
