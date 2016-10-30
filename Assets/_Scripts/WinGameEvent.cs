@@ -9,7 +9,7 @@ public class WinGameEvent : MonoBehaviour {
 	int triggerplay = 0;
 	public List<int> played = new List<int>();
 	int[] order;
-	public bool ifdead;
+//	public bool ifdead;
 	public bool wrong;
 	public bool win;
 
@@ -26,7 +26,7 @@ public class WinGameEvent : MonoBehaviour {
 		order[1] = 2;
 		order[2] = 3;
 		order[3] = 4;
-		ifdead = false;
+//		ifdead = false;
 		wrong = false;
 		win = false;
 	}
@@ -35,20 +35,20 @@ public class WinGameEvent : MonoBehaviour {
 		triggerplay++;
 	}
 
-	public void dead() {
-		ifdead = true;
-	}
+//	public void dead() {
+//		ifdead = true;
+//	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (ifdead) {
-			//menu
-			print ("dead"); 
-			if (Input.GetKeyDown("return")) {
-				Scene scene = SceneManager.GetActiveScene();
-				SceneManager.LoadScene(scene.name);
-			}
-		} else {
+//		if (ifdead) {
+//			//menu
+//			print ("dead"); 
+//			if (Input.GetKeyDown("return")) {
+//				Scene scene = SceneManager.GetActiveScene();
+//				SceneManager.LoadScene(scene.name);
+//			}
+//		} else {
 			bool played_right = true;
 			//if (played.Count == order.Length) {
 			for (int i = 0; i < played.Count; ++i) {
@@ -64,7 +64,7 @@ public class WinGameEvent : MonoBehaviour {
 			} else if(played.Count == order.Length && played_right)  {
 				win = true;
 			}
-		}
+//		}
 
 		if (win) {
 			if (Input.GetKeyDown("return")) {

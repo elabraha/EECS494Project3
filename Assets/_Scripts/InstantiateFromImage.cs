@@ -22,7 +22,7 @@ public class InstantiateFromImage : MonoBehaviour
 	// Use this for initialization
 	public void OnPointerClick(PointerEventData eventData) // 3
 	{
-		if (WinGameEvent.G.ifdead == false) {
+		//if (WinGameEvent.G.ifdead == false) {
 			print ("I was clicked");
 			print ("create");
 			target = Color.green;
@@ -31,7 +31,7 @@ public class InstantiateFromImage : MonoBehaviour
 			pos.z = 30.0f;
 
 			newobj = Instantiate (prefab, pos, Quaternion.identity) as GameObject;
-		}
+		//}
 	}
 
 //	public void OnPointerEnter(PointerEventData eventData)

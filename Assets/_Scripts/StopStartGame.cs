@@ -25,8 +25,8 @@ public class StopStartGame : MonoBehaviour {
 	void Spawn()
 	{
 		print ("why not going");
-		//InvokeRepeating("SpawnObject", 2, 10);
-		Invoke("SpawnObject", 2.0f);
+		InvokeRepeating("SpawnObject", 2, 10);
+		//Invoke("SpawnObject", 2.0f);
 	}
 
 	void DestroyAllObjects()
@@ -46,7 +46,7 @@ public class StopStartGame : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (WinGameEvent.G.ifdead == true || WinGameEvent.G.win == true) {
+		if (/*WinGameEvent.G.ifdead == true ||*/ WinGameEvent.G.win == true) {
 			CancelInvoke ();
 			DestroyAllObjects ();
 			canvas.enabled = true;
