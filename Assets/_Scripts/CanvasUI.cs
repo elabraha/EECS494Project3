@@ -16,21 +16,22 @@ public class CanvasUI : MonoBehaviour {
 		if (WinGameEvent.G.ifdead) {
 			box.enabled = true;
 			box.text = "enter to restart. esc to quit";
-		}
-		if (WinGameEvent.G.wrong) {
+		} else if (WinGameEvent.G.wrong) {
 			box.enabled = true;
 			box.text = "wrong";
-		}
-		if(WinGameEvent.G.win) {
+		} else if (WinGameEvent.G.win) {
 			box.enabled = true;
 			box.text = "WIN!! enter to restart. esc to quit";
+		} else {
+			box.enabled = false;
+			box.text = "";
 		}
 
-		if (Input.GetKeyDown (KeyCode.Alpha0)) {
-			SceneManager.LoadScene ("_Scene_0");
-		}
-		if (Input.GetKeyDown (KeyCode.Alpha1)) {
-			SceneManager.LoadScene ("_Scene_1");
-		}
+//		if (Input.GetKeyDown (KeyCode.Alpha0)) {
+//			SceneManager.LoadScene ("_Scene_0");
+//		}
+//		if (Input.GetKeyDown (KeyCode.Alpha1)) {
+//			SceneManager.LoadScene ("_Scene_1");
+//		}
 	}
 }

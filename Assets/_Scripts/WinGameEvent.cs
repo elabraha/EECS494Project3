@@ -12,7 +12,7 @@ public class WinGameEvent : MonoBehaviour {
 	public bool ifdead;
 	public bool wrong;
 	public bool win;
-
+	float timeWrong = 30.0f;
 	public static WinGameEvent G;
 
 	void Awake() {
@@ -64,10 +64,17 @@ public class WinGameEvent : MonoBehaviour {
 			} else if(played.Count == order.Length && played_right)  {
 				win = true;
 			}
+			if(wrong) {
+				timeWrong -= Time.deltaTime;
+				if (timeWrong < 0) {
+					wrong = false;
+					timeWrong = 30.0f;
+				}
+			}
 		}
 
 		if (win) {
-			if (Input.GetKeyDown("return")) {
+			if (Input.GetKeyDown("return")) { // change to clicking to load the next level
 				Scene scene = SceneManager.GetActiveScene();
 				SceneManager.LoadScene(scene.name);
 			}

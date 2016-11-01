@@ -29,7 +29,7 @@ public class SuperSpringboard : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision coll) {
-		if (coll.gameObject.tag == "Note") {
+		if (coll.gameObject.tag == "Baby") {
 			Note = coll.gameObject;
 			moveobject = true;
 			//print ("note collide"); 

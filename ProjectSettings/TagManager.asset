@@ -7,6 +7,8 @@ TagManager:
   - Note
   - Springboard
   - Gridobj
+  - Beam
+  - Baby
   layers:
   - Default
   - TransparentFX
@@ -20,8 +22,8 @@ TagManager:
   - Note
   - GridLayer
   - Conveyer
-  - 
-  - 
+  - beam
+  - Baby
   - 
   - 
   - 

@@ -26,18 +26,22 @@ public class Note : MonoBehaviour {
 		y_boundry_max = Camera.main.transform.position.y + height / 2.0f;
 		x_boundry_min = Camera.main.transform.position.x - width / 2.0f;
 		y_boundry_min = Camera.main.transform.position.x - height / 2.0f;
-		float rad = GetComponent <CapsuleCollider> ().bounds.size.x / 2.0f;
-		float boundy = GetComponent <CapsuleCollider>().bounds.size.y / 2.0f;
+//		float rad = GetComponent <CapsuleCollider> ().bounds.size.x / 2.0f;
+//		float boundy = GetComponent <CapsuleCollider>().bounds.size.y / 2.0f;
 
 
 		if (transform.position.x >= x_boundry_max) {
 //			Vector3 pos = transform.position;
 //			pos.x = x_boundry_max - rad;
 //			transform.position = pos;
+			//change direction maybe
+
 		} else if (transform.position.x < x_boundry_min) {
 //			Vector3 pos = transform.position;
 //			pos.x = x_boundry_min + rad;
 //			transform.position = pos;
+
+			//change direcion maybe?
 		}
 
 		if (transform.position.y >= y_boundry_max) {

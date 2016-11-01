@@ -31,7 +31,8 @@ public class RegularSpringBoard : MonoBehaviour {
 
 
 	void OnCollisionEnter(Collision coll) {
-		if (coll.gameObject.tag == "Note") {
+		print ("I have collided");
+		if (coll.gameObject.tag == "Baby") {
 			Note = coll.gameObject;
 			moveobject = true;
 			print ("note collide"); 

@@ -48,7 +48,7 @@ public class ConveyerBelt : MonoBehaviour {
 
 	// Use this for initialization
 	void OnCollisionEnter(Collision coll){
-		if (coll.gameObject.tag == "Note") {
+		if (coll.gameObject.tag == "Baby") {
 			//objectToMove = coll.gameObject;
 			//starttime = Time.time;
 			//startpos = coll.gameObject.transform.position;
@@ -57,7 +57,8 @@ public class ConveyerBelt : MonoBehaviour {
 			//moveObject = true;
 			//speed = 5.0f;
 
-			coll.gameObject.GetComponent <Note>().OnConveyer ();
+			coll.gameObject.GetComponent <Baby>().OnConveyer ();
+			coll.gameObject.GetComponent <Baby>().dirchange  = true;
 		}
 	}
 
