@@ -114,9 +114,11 @@ public class WinGameEvent : MonoBehaviour {
 				Scene scene = SceneManager.GetActiveScene();
 				//Scene newscene = scene;
 				if (scene.name == "_Scene_1") {
-					SceneManager.LoadScene("_Scene_2");
+					SceneManager.LoadScene ("_Scene_2");
+				} else if (scene.name == "_Scene_2") {
+					SceneManager.LoadScene ("_Scene_3");
 				} else {
-					SceneManager.LoadScene("_Scene_2");
+					Application.Quit();
 				}
 			}
 		}

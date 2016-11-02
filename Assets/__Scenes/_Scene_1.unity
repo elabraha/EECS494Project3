@@ -1308,7 +1308,7 @@ Prefab:
     - target: {fileID: 224000012232459488, guid: f5fb55d9aea904790a593d1dd607686d,
         type: 2}
       propertyPath: m_SizeDelta.y
-      value: 200
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 224000012232459488, guid: f5fb55d9aea904790a593d1dd607686d,
         type: 2}
@@ -1339,6 +1339,15 @@ Prefab:
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000012408942816, guid: f5fb55d9aea904790a593d1dd607686d,
+        type: 2}
+      propertyPath: m_Text
+      value: 'You win by getting all the notes in order and getting the baby in the
+        craddle. You can use the blocking cone to stop the baby from walking. Watch
+        out you can''t block him from falling. Also, you can block the movement of
+        the moving beams. Cheats are 1 to see the craddle. And 0 to win the Game.
+        ALL LEVELS! '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5fb55d9aea904790a593d1dd607686d, type: 2}
