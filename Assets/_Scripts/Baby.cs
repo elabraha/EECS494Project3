@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Threading;
 
 enum Direction {LEFT, RIGHT};
 
@@ -21,10 +22,11 @@ public class Baby : MonoBehaviour {
 	bool hitnotboard = false;
 
 	public int health;
-
+	float timer = 0.0f;
 	Vector3 fallcheck;
 
 	bool grounded = false;
+	AudioSource[] audio;
 
 	void Start () {
 		Camera cam = Camera.main;
@@ -33,6 +35,9 @@ public class Baby : MonoBehaviour {
 		onBeam = false;
 		dir = Direction.RIGHT;
 		health = 4;
+		timer = 8.0f;
+		audio = GetComponents <AudioSource> ();
+		audio[0].Play ();
 	}
 	void outofbounds(){
 		x_boundry_max = Camera.main.transform.position.x + width / 2.0f;
@@ -49,6 +54,8 @@ public class Baby : MonoBehaviour {
 			//			transform.position = pos;
 			//change direction maybe
 			transform.position = new Vector3(x_boundry_min + rad, transform.position.y, 30.0f);
+			timer = 5.0f;
+			audio [0].Play ();
 		} else if (transform.position.x < x_boundry_min) {
 			//			Vector3 pos = transform.position;
 			//			pos.x = x_boundry_min + rad;
@@ -56,6 +63,8 @@ public class Baby : MonoBehaviour {
 
 			//change direcion maybe?
 			print("out of bounds");
+			timer = 5.0f;
+			audio [0].Play ();
 			transform.position = new Vector3(x_boundry_max - rad, transform.position.y, 30.0f);
 
 		}
@@ -93,7 +102,7 @@ public class Baby : MonoBehaviour {
 			hitnotboard = true;
 		}
 		if(coll.gameObject.tag == "Beam") {
-			//print ("you do it");
+			print ("you do it");
 			onBeam = true;
 		}
 		grounded = true;
@@ -112,6 +121,9 @@ public class Baby : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//print ("onbeam: " + onBeam);
+		if (health == 0) {
+			WinGameEvent.G.dead ();
+		}
 
 		if (grounded) {
 			
@@ -119,6 +131,10 @@ public class Baby : MonoBehaviour {
 				float dist = fallcheck.y - transform.position.y;
 				if (dist > 1.0f) {
 					health -= 2;
+					audio [1].Play ();
+					if (health == 0) {
+						WinGameEvent.G.dead ();
+					}
 					hitnotboard = false;
 				}
 			}
@@ -134,7 +150,11 @@ public class Baby : MonoBehaviour {
 			dirchange = false;
 		}
 
-		if (onBeam) {
+		if (timer > 0.0f) {
+			timer -= Time.deltaTime;
+		}
+
+		if (onBeam && timer <= 0.0f) {
 			//print ("okgo"); 
 			Vector3 move = GetComponent<Rigidbody> ().velocity;
 			Vector3 direction = DirToVec(dir);

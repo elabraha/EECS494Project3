@@ -3,24 +3,27 @@ using System.Collections;
 
 public class SuperSpringboard : MonoBehaviour {
 
-	GameObject Note;
+	GameObject Baby;
 	bool moveobject = false;
 	private Vector3 screenPoint;
 	private Vector3 offset;
-	//Vector3 GRAV = new Vector3 (0.0f, -9.8f, 0.0f); 
+	bool individualdragtoggle;
 
-	// Use this for initialization
+	void Start(){
+		//print("now I was created");
+		individualdragtoggle = true;
+	}
 
 	void OnMouseDown(){
-		if (StopStartGame.S.dragModeOn) {
-			//print ("anything??");
+		if (StopStartGame.S.dragModeOn || individualdragtoggle == true) {
+			print ("anything??");
 			//screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 			offset = transform.position - Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 30.0f));
 		}
 	}
 
 	void OnMouseDrag(){
-		if (StopStartGame.S.dragModeOn) {
+		if (StopStartGame.S.dragModeOn || individualdragtoggle == true) {
 			//print ("no??");
 			Vector3 cursorPoint = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 30.0f);
 			Vector3 cursorPosition = Camera.main.ScreenToWorldPoint (cursorPoint) + offset;
@@ -30,17 +33,22 @@ public class SuperSpringboard : MonoBehaviour {
 
 	void OnCollisionEnter(Collision coll) {
 		if (coll.gameObject.tag == "Baby") {
-			Note = coll.gameObject;
+			Baby = coll.gameObject;
 			moveobject = true;
-			//print ("note collide"); 
+			individualdragtoggle = false;
+		}
+	}
+	void OnCollisionExit(Collision coll) {
+		if (coll.gameObject.tag == "Baby") {
+			individualdragtoggle = false;
 		}
 	}
 
 	void Update() {
-		if (Note && moveobject) {
+		if (Baby && moveobject) {
 			//Note.GetComponent <Rigidbody>().AddForce(Vector3.up * 10.0f * -Note.gameObject.transform.position.normalized.y, ForceMode.VelocityChange);
 			//Vector3 vel = Note.GetComponent <Rigidbody>().velocity;
-			Note.GetComponent <Rigidbody> ().velocity +=  10.0f * Vector3.up;
+			Baby.GetComponent <Rigidbody> ().velocity +=  10.0f * Vector3.up;
 			//print ("add force");
 			moveobject = false;
 		}

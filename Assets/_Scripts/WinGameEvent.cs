@@ -8,25 +8,36 @@ public class WinGameEvent : MonoBehaviour {
 
 	int triggerplay = 0;
 	public List<int> played = new List<int>();
-	int[] order;
-	public bool ifdead;
+	public int[] order;
+	public int deadyet;
 	public bool wrong;
 	public bool win;
 	float timeWrong = 30.0f;
 	public static WinGameEvent G;
+	public int babyCount = 0;
+	public GameObject cribPrefab;
+	public int babySleep = 0;
+	AudioSource source;
 
 	void Awake() {
 		G = this;
+		source = GetComponent <AudioSource> ();
 	}
 
 	// Use this for initialization
 	void Start () {
-		order = new int[4];
-		order[0] = 1;
-		order[1] = 2;
-		order[2] = 3;
-		order[3] = 4;
-		ifdead = false;
+		//deadyet is number of babies on each level
+		Scene scene = SceneManager.GetActiveScene();
+		if (scene.name == "_Scene_1") {
+			order = new int[2];
+			order [0] = 1;
+			order [1] = 2;
+		}
+		if (scene.name == "_Scene_2") {
+			order = new int[2];
+			order [0] = 1;
+			order [1] = 2;
+		}
 		wrong = false;
 		win = false;
 	}
@@ -36,15 +47,16 @@ public class WinGameEvent : MonoBehaviour {
 	}
 
 	public void dead() {
-		ifdead = true;
+		deadyet -= 1;
+		//print ("I ded");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (ifdead) {
+		if (deadyet <= 0) {
 			//menu
-			print ("dead"); 
 			if (Input.GetKeyDown("return")) {
+				print ("reload??");
 				Scene scene = SceneManager.GetActiveScene();
 				SceneManager.LoadScene(scene.name);
 			}
@@ -52,6 +64,9 @@ public class WinGameEvent : MonoBehaviour {
 			bool played_right = true;
 			//if (played.Count == order.Length) {
 			for (int i = 0; i < played.Count; ++i) {
+//				print (i);
+//				print (order [i]);
+//				print (played [i]);
 				if (order [i] != played [i]) {
 					played_right = false;
 					print ("wrong at " + i); 
@@ -61,8 +76,20 @@ public class WinGameEvent : MonoBehaviour {
 			//}
 			if (!played_right) {
 				wrong = true;
-			} else if(played.Count == order.Length && played_right)  {
-				win = true;
+			} else if(played.Count == order.Length && played_right || Input.GetKeyDown (KeyCode.Alpha1))  {
+				GameObject [] notes = GameObject.FindGameObjectsWithTag ("Note");
+		
+				for(var i = 0 ; i < notes.Length ; i ++)
+				{
+					Destroy(notes[i]);
+				}
+				Scene scene = SceneManager.GetActiveScene();
+				if (scene.name == "_Scene_1")
+					Instantiate (cribPrefab, new Vector3(-32f, -6f, 30f), Quaternion.identity);
+				else if(scene.name == "_Scene_2")
+					Instantiate (cribPrefab, new Vector3(30.15f, -6f, 30f), Quaternion.identity);
+				else 
+					Instantiate (cribPrefab, new Vector3(0f, -4f, 30f), Quaternion.identity);
 			}
 			if(wrong) {
 				timeWrong -= Time.deltaTime;
@@ -72,11 +99,25 @@ public class WinGameEvent : MonoBehaviour {
 				}
 			}
 		}
+		if (Input.GetKeyDown (KeyCode.Alpha0)) {
+			babySleep = babyCount;
+		}
+		if (babySleep == babyCount) {
+			source.Play ();
+			win = true;
+			babyCount = 0;
+		}
 
 		if (win) {
+			//menu
 			if (Input.GetKeyDown("return")) { // change to clicking to load the next level
 				Scene scene = SceneManager.GetActiveScene();
-				SceneManager.LoadScene(scene.name);
+				//Scene newscene = scene;
+				if (scene.name == "_Scene_1") {
+					SceneManager.LoadScene("_Scene_2");
+				} else {
+					SceneManager.LoadScene("_Scene_2");
+				}
 			}
 		}
 

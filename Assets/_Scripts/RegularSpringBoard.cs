@@ -1,19 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEditorInternal;
 
 public class RegularSpringBoard : MonoBehaviour {
 
 	private Vector3 screenPoint;
 	private Vector3 offset;
-	GameObject Note;
 	bool moveobject = false;
+	bool individualdragtoggle;
+	GameObject Baby;
 
 	void Start(){
 		//print("now I was created");
+		individualdragtoggle = true;
 	}
 
 	void OnMouseDown(){
-		if (StopStartGame.S.dragModeOn) {
+		if (StopStartGame.S.dragModeOn || individualdragtoggle == true) {
 			print ("anything??");
 			//screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 			offset = transform.position - Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 30.0f));
@@ -21,7 +24,7 @@ public class RegularSpringBoard : MonoBehaviour {
 	}
 
 	void OnMouseDrag(){
-		if (StopStartGame.S.dragModeOn) {
+		if (StopStartGame.S.dragModeOn || individualdragtoggle == true) {
 			//print ("no??");
 			Vector3 cursorPoint = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 30.0f);
 			Vector3 cursorPosition = Camera.main.ScreenToWorldPoint (cursorPoint) + offset;
@@ -33,17 +36,18 @@ public class RegularSpringBoard : MonoBehaviour {
 	void OnCollisionEnter(Collision coll) {
 		print ("I have collided");
 		if (coll.gameObject.tag == "Baby") {
-			Note = coll.gameObject;
+			Baby = coll.gameObject;
 			moveobject = true;
 			print ("note collide"); 
+			individualdragtoggle = false;
 		}
 	}
 
 	void Update() {
-		if (Note && moveobject) {
+		if (Baby && moveobject) {
 //			Note.GetComponent <Rigidbody>().AddForce(Vector3.up * -Note.gameObject.transform.position.normalized.y, ForceMode.VelocityChange);
 //			print (Vector3.up * -Note.gameObject.transform.position.normalized.y);
-			Note.GetComponent <Rigidbody> ().velocity +=  6.0f * Vector3.up;
+			Baby.GetComponent <Rigidbody> ().velocity +=  6.0f * Vector3.up;
 			print ("add force");
 			moveobject = false;
 		}

@@ -13,7 +13,8 @@ public class CanvasUI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (WinGameEvent.G.ifdead) {
+		//make a menu
+		if (WinGameEvent.G.deadyet <= 0) {
 			box.enabled = true;
 			box.text = "enter to restart. esc to quit";
 		} else if (WinGameEvent.G.wrong) {
@@ -21,7 +22,7 @@ public class CanvasUI : MonoBehaviour {
 			box.text = "wrong";
 		} else if (WinGameEvent.G.win) {
 			box.enabled = true;
-			box.text = "WIN!! enter to restart. esc to quit";
+			box.text = "WIN!! enter to load next level. esc to quit";
 		} else {
 			box.enabled = false;
 			box.text = "";

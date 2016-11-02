@@ -9,6 +9,8 @@ TagManager:
   - Gridobj
   - Beam
   - Baby
+  - Cone
+  - warning
   layers:
   - Default
   - TransparentFX
@@ -24,8 +26,8 @@ TagManager:
   - Conveyer
   - beam
   - Baby
-  - 
-  - 
+  - BackgroundImage
+  - BlockCone
   - 
   - 
   - 

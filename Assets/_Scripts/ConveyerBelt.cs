@@ -7,7 +7,7 @@ public class ConveyerBelt : MonoBehaviour {
 	//float starttime = 0.0f;
 	//Vector3 finishpos;
 	//GameObject objectToMove;
-	bool moveObject = false;
+	//bool moveObject = false;
 	public float timetodest = 1.0f;
 	//Vector3 startpos;
 //	float speed = 0.0f;
@@ -16,9 +16,15 @@ public class ConveyerBelt : MonoBehaviour {
 
 	private Vector3 screenPoint;
 	private Vector3 offset;
+	bool individualdragtoggle;
+
+	void Start(){
+		//print("now I was created");
+		individualdragtoggle = true;
+	}
 
 	void OnMouseDown(){
-		if (StopStartGame.S.dragModeOn) {
+		if (StopStartGame.S.dragModeOn || individualdragtoggle == true) {
 			print ("anything??");
 			//screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
 			offset = transform.position - Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 30.0f));
@@ -26,24 +32,12 @@ public class ConveyerBelt : MonoBehaviour {
 	}
 
 	void OnMouseDrag(){
-		if (StopStartGame.S.dragModeOn) {
-			print ("no??");
+		if (StopStartGame.S.dragModeOn || individualdragtoggle == true) {
+			//print ("no??");
 			Vector3 cursorPoint = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 30.0f);
 			Vector3 cursorPosition = Camera.main.ScreenToWorldPoint (cursorPoint) + offset;
 			transform.position = cursorPosition;
 		}
-	}
-
-
-
-	void Start(){
-//		BoxCollider b = this.GetComponent <Collider> () as BoxCollider;
-//		Vector3 collidersize = b.size;
-//		Vector3 pos = transform.position;
-//		pos.x = pos.x + collidersize.x / 2.0f + 1.4f;
-//		pos.y = pos.y + collidersize.y / 2.0f;
-//		finishpos = pos;
-		print("now I was created");
 	}
 
 	// Use this for initialization
@@ -59,8 +53,15 @@ public class ConveyerBelt : MonoBehaviour {
 
 			coll.gameObject.GetComponent <Baby>().OnConveyer ();
 			coll.gameObject.GetComponent <Baby>().dirchange  = true;
+			individualdragtoggle = false;
 		}
 	}
+
+	void OnCollisionExit(Collision coll){
+		if (coll.gameObject.tag == "Baby") {
+			individualdragtoggle = false;
+		}
+	}	
 
 
 	// Update is called once per frame

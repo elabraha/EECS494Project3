@@ -14,6 +14,9 @@ public class MovingBeam: MonoBehaviour {
 	public bool ispos = true;
 	bool collided = false;
 	float speed = 2.0f;
+	float timer = 0.0f;
+	float velocitybaby = 0.0f;
+	bool hasbaby = false;
 
 	void Start(){
 		print ("was dropped");
@@ -23,30 +26,37 @@ public class MovingBeam: MonoBehaviour {
 	void OnCollisionEnter(Collision coll) {
 		//print ("collide " + this.gameObject.name);
 		if (coll.gameObject.tag == "Baby") {
-			//slow baby down??
+			//velocitybaby = coll.gameObject.GetComponent <Rigidbody>().velocity();
+			hasbaby = true;
 		} else {
+			timer = 3.0f;
 			collided = true;
 		}
 	}
 		
 
-	void OnMouseDown(){
-		if (StopStartGame.S.dragModeOn) {
-			//print ("anything??");
-			//screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
-			offset = transform.position - Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 30.0f));
-		}
+	void OnCollisionExit(Collision coll) {
+		hasbaby = false;
 	}
+		
 
-	void OnMouseDrag(){
-		if (StopStartGame.S.dragModeOn) {
-			//print ("no??");
-			Vector3 cursorPoint = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 30.0f);
-			Vector3 cursorPosition = Camera.main.ScreenToWorldPoint (cursorPoint) + offset;
-			transform.position = cursorPosition;
-		}
-	}
-
+//	void OnMouseDown(){
+//		if (StopStartGame.S.dragModeOn) {
+//			//print ("anything??");
+//			//screenPoint = Camera.main.WorldToScreenPoint(gameObject.transform.position);
+//			offset = transform.position - Camera.main.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 30.0f));
+//		}
+//	}
+//
+//	void OnMouseDrag(){
+//		if (StopStartGame.S.dragModeOn) {
+//			//print ("no??");
+//			Vector3 cursorPoint = new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 30.0f);
+//			Vector3 cursorPosition = Camera.main.ScreenToWorldPoint (cursorPoint) + offset;
+//			transform.position = cursorPosition;
+//		}
+//	}
+//
 	bool bounds() {
 		bool direction_change = false;
 		Camera cam = Camera.main;
@@ -75,21 +85,27 @@ public class MovingBeam: MonoBehaviour {
 	}
 
 	void Update() {
+//		if (hasbaby) {
+//			GetComponentInChildren <Baby>().gameObject.GetComponent <Rigidbody>().velocity;
+//		}
 		if (bounds() || collided) {
-			if (ispos && !isupdown) {
-				transform.Translate (Vector3.left * Time.deltaTime * speed);
-				ispos = false;
-			} else if (!isupdown && !ispos){
-				transform.Translate (Vector3.right * Time.deltaTime * speed);
-				ispos = true;
-			} else if(ispos && isupdown) {
-				transform.Translate (Vector3.down * Time.deltaTime * speed);
-				ispos = false;
-			} else if (isupdown && !ispos){
-				transform.Translate (Vector3.up * Time.deltaTime * speed);
-				ispos = true;
+			timer -= Time.deltaTime;
+			if (timer <= 0.0f) {
+				if (ispos && !isupdown) {
+					transform.Translate (Vector3.left * Time.deltaTime * speed);
+					ispos = false;
+				} else if (!isupdown && !ispos) {
+					transform.Translate (Vector3.right * Time.deltaTime * speed);
+					ispos = true;
+				} else if (ispos && isupdown) {
+					transform.Translate (Vector3.down * Time.deltaTime * speed);
+					ispos = false;
+				} else if (isupdown && !ispos) {
+					transform.Translate (Vector3.up * Time.deltaTime * speed);
+					ispos = true;
+				}
+				collided = false;
 			}
-			collided = false;
 		} else {
 			if (ispos && !isupdown) {
 				transform.Translate (Vector3.right * Time.deltaTime * speed);
