@@ -30,7 +30,7 @@ public class PlayButton : MonoBehaviour {
 		//print (audio.Length);
 		for (int i = 1; i < audio.Length; i++) {
 			print (i);
-			audio [i].PlayDelayed (2+i);
+			audio [i].PlayDelayed (1+i);
 		}
 
 	}
