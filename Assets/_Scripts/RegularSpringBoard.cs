@@ -37,7 +37,6 @@ public class RegularSpringBoard : MonoBehaviour {
 		if (coll.gameObject.tag == "Baby") {
 			Baby = coll.gameObject;
 			moveobject = true;
-			print ("note collide"); 
 			individualdragtoggle = false;
 		}
 	}

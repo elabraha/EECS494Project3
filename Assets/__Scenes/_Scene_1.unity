@@ -227,7 +227,7 @@ RectTransform:
   m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 425, y: -496}
+  m_AnchoredPosition: {x: 384, y: -496}
   m_SizeDelta: {x: 50, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &59977550
@@ -306,7 +306,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000014185459334, guid: 3eb1ca21bcb23452e9f57ab42d3142d5, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3eb1ca21bcb23452e9f57ab42d3142d5, type: 2}
@@ -348,7 +348,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012543605658, guid: c7f686bac92174b668090fe19742c14f, type: 2}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 1000011018712680, guid: c7f686bac92174b668090fe19742c14f, type: 2}
       propertyPath: m_TagString
@@ -422,7 +422,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
 --- !u!114 &627002541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -606,7 +606,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!1001 &764332376
 Prefab:
   m_ObjectHideFlags: 0
@@ -644,7 +644,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000013632078106, guid: d8cdcc7caf6244f7ea6996c6b1adaea4, type: 2}
       propertyPath: m_RootOrder
-      value: 13
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1000013760779618, guid: d8cdcc7caf6244f7ea6996c6b1adaea4, type: 2}
       propertyPath: m_TagString
@@ -690,7 +690,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012716755472, guid: cd6d18d6f778f485d89155bf0a997ddf, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1000013522837450, guid: cd6d18d6f778f485d89155bf0a997ddf, type: 2}
       propertyPath: m_Name
@@ -782,7 +782,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &837546242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1103,7 +1103,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012716755472, guid: cd6d18d6f778f485d89155bf0a997ddf, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 54000012472686368, guid: cd6d18d6f778f485d89155bf0a997ddf,
         type: 2}
@@ -1155,7 +1155,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000014185459334, guid: 3eb1ca21bcb23452e9f57ab42d3142d5, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1000011663462540, guid: 3eb1ca21bcb23452e9f57ab42d3142d5, type: 2}
       propertyPath: m_Name
@@ -1174,93 +1174,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3eb1ca21bcb23452e9f57ab42d3142d5, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &973378111
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 973378116}
-  - 20: {fileID: 973378115}
-  - 124: {fileID: 973378114}
-  - 92: {fileID: 973378113}
-  - 81: {fileID: 973378112}
-  m_Layer: 0
-  m_Name: Camera
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &973378112
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 973378111}
-  m_Enabled: 1
---- !u!92 &973378113
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 973378111}
-  m_Enabled: 1
---- !u!124 &973378114
-Behaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 973378111}
-  m_Enabled: 1
---- !u!20 &973378115
-Camera:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 973378111}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 2
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 70
-  orthographic: 1
-  orthographic size: 40
-  m_Depth: -2
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 0
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
-  m_StereoMirrorMode: 0
---- !u!4 &973378116
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 973378111}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.899563, y: 9.269193, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
 --- !u!1 &1292345716
 GameObject:
   m_ObjectHideFlags: 0
@@ -1323,7 +1236,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
 --- !u!114 &1708748070 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114000012408942816, guid: f5fb55d9aea904790a593d1dd607686d,
@@ -1430,11 +1343,12 @@ Prefab:
     - target: {fileID: 114000012408942816, guid: f5fb55d9aea904790a593d1dd607686d,
         type: 2}
       propertyPath: m_Text
-      value: 'You win by getting all the notes in order and getting the baby in the
-        craddle. You can use the blocking cone to stop the baby from walking. Watch
-        out you can''t block him from falling. Also, you can block the movement of
-        the moving beams. Cheats are 1 to see the craddle. And 0 to win the Game.
-        ALL LEVELS! '
+      value: 'You win by getting all the notes in order. You''ll hear the order when
+        you press the play button below. and getting the baby in the craddle. You
+        can use the blocking cone to stop the baby from walking. Watch out you can''t
+        block him from falling. Also, you can block the movement of the moving beams.
+        Cheats are 1 to see the craddle. And 0 to win the Game. ALL LEVELS! Click
+        instructions to toggle off. '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f5fb55d9aea904790a593d1dd607686d, type: 2}
@@ -1484,7 +1398,7 @@ Prefab:
     - target: {fileID: 224000012770992298, guid: 7070cdc5d611742f1876a10340dc60e0,
         type: 2}
       propertyPath: m_RootOrder
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 224000012770992298, guid: 7070cdc5d611742f1876a10340dc60e0,
         type: 2}
@@ -2024,7 +1938,7 @@ Transform:
   - {fileID: 1854574103}
   - {fileID: 1991547450}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 13
 --- !u!1 &1991547448
 GameObject:
   m_ObjectHideFlags: 0
@@ -2323,7 +2237,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4000012716755472, guid: cd6d18d6f778f485d89155bf0a997ddf, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1000013522837450, guid: cd6d18d6f778f485d89155bf0a997ddf, type: 2}
       propertyPath: m_Name

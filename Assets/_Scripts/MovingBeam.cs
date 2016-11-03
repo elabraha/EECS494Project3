@@ -15,8 +15,8 @@ public class MovingBeam: MonoBehaviour {
 	bool collided = false;
 	float speed = 2.0f;
 	float timer = 0.0f;
-	float velocitybaby = 0.0f;
-	bool hasbaby = false;
+//	float velocitybaby = 0.0f;
+//	bool hasbaby = false;
 
 	void Start(){
 		print ("was dropped");
@@ -27,7 +27,7 @@ public class MovingBeam: MonoBehaviour {
 		//print ("collide " + this.gameObject.name);
 		if (coll.gameObject.tag == "Baby") {
 			//velocitybaby = coll.gameObject.GetComponent <Rigidbody>().velocity();
-			hasbaby = true;
+			//hasbaby = true;
 		} else {
 			timer = 3.0f;
 			collided = true;
@@ -35,9 +35,9 @@ public class MovingBeam: MonoBehaviour {
 	}
 		
 
-	void OnCollisionExit(Collision coll) {
-		hasbaby = false;
-	}
+//	void OnCollisionExit(Collision coll) {
+//		hasbaby = false;
+//	}
 		
 
 //	void OnMouseDown(){

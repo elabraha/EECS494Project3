@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Threading;
+using System.Runtime.InteropServices;
 
 enum Direction {LEFT, RIGHT};
 
@@ -27,6 +28,7 @@ public class Baby : MonoBehaviour {
 
 	bool grounded = false;
 	AudioSource[] audio;
+	float speedbeam = 100.0f;
 
 	void Start () {
 		Camera cam = Camera.main;
@@ -97,13 +99,19 @@ public class Baby : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision coll) {
-		if (coll.gameObject.tag != "SpringBoard") {
+		if (coll.gameObject.tag != "Springboard") {
 			//health -= 2;
 			hitnotboard = true;
 		}
 		if(coll.gameObject.tag == "Beam") {
 			print ("you do it");
 			onBeam = true;
+			if (coll.gameObject.name == "movingup") {
+				speedbeam = 40.0f;
+			}
+			else {
+				speedbeam = 100.0f;
+			}
 		}
 		grounded = true;
 
@@ -129,14 +137,14 @@ public class Baby : MonoBehaviour {
 			
 			if (hitnotboard) {
 				float dist = fallcheck.y - transform.position.y;
-				if (dist > 1.0f) {
+				if (dist > 5.0f) {
 					health -= 2;
 					audio [1].Play ();
 					if (health == 0) {
 						WinGameEvent.G.dead ();
 					}
-					hitnotboard = false;
 				}
+				hitnotboard = false;
 			}
 			fallcheck = transform.position;
 		}
@@ -158,16 +166,16 @@ public class Baby : MonoBehaviour {
 			//print ("okgo"); 
 			Vector3 move = GetComponent<Rigidbody> ().velocity;
 			Vector3 direction = DirToVec(dir);
-			move.x =  direction.x * 100.0f * Time.deltaTime;
+			move.x =  direction.x * speedbeam * Time.deltaTime;
 			GetComponent<Rigidbody> ().velocity = move;
 		} else if (moveObject) {
 			//print ("okgo");
 			Vector3 direction = DirToVec(dir);
 			speed -= speed_change * direction.x * Time.deltaTime; //change this so that it get's called from note
 			Vector3 moveonbelt = GetComponent<Rigidbody> ().velocity;
-			print (moveonbelt.x);
+			//print (moveonbelt.x);
 			moveonbelt.x = speed * direction.x;
-			print (moveonbelt.x); 
+			//print (moveonbelt.x); 
 			if ((moveonbelt.x <= 0.0f && direction.x > 0.0f) || (moveonbelt.x >= 0.0f && direction.x < 0.0f) || onBeam) {
 				moveObject = false;
 			}

@@ -8,12 +8,12 @@ public class ConePass : MonoBehaviour {
 		if (coll.gameObject.tag == "Baby") {
 			print ("somethinghappened");
 			print (GetComponent <Collider> ().gameObject.tag);
-			Physics.IgnoreCollision (coll, GetComponent <Collider>());
+			Physics.IgnoreCollision (coll, this.gameObject.GetComponent <Collider>());
 		}
 	}
 
 	void OnTriggerExit(Collider coll) {
 		if (coll.gameObject.tag == "Baby")
-			Physics.IgnoreCollision (coll, GetComponent <Collider>(), false);
+			Physics.IgnoreCollision (coll, this.gameObject.GetComponent <Collider>(), false);
 	}
 }
